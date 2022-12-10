@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/trabsaccion")
+@RequestMapping("/transaccion")
 public class TransaccionController {
     
     @Autowired
@@ -50,7 +50,7 @@ public class TransaccionController {
         Transaccion obj = transaccionService.findById(transaccion.getId_transaccion()); 
         if(obj!=null) {
             
-            obj.setSaldo_transaccion(transaccion.getSaldo_transaccion());
+            obj.setValor_transaccion(transaccion.getValor_transaccion());
             
             transaccionService.save(obj); 
         } 
@@ -66,6 +66,6 @@ public class TransaccionController {
     
     @GetMapping("/list/{id}") 
     public Transaccion consultaPorId(@PathVariable String id){ 
-        return TransaccionService.findById(id); 
+        return transaccionService.findById(id); 
     }
 }
